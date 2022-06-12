@@ -14,11 +14,14 @@ function App() {
     .then(data => setAllQuiz(data.results))
   }, [])
 
-  // function holdOption(id,optionId) {
-  //   setQuizzzes(prevQuiz => prevQuiz.map(quiz=>{
-  //     return (quiz.id===id)
+  function clickedOption(id,optionId) {
+  //   setQuizzzes(prevQuiz => prevQuiz.map(quiz => {
+  //     return quiz.id===id ? 
+  //       {...quiz, isHeld : !quiz.isHeld}
+  //       :
+  //       quiz
   //   }))
-  // }
+  }
 
   function startQuiz(){
     const quizElements = allQuiz.map(quiz=> {
@@ -26,10 +29,10 @@ function App() {
         ...quiz,
         id: nanoid(),
         options: [
-          { id: nanoid(), value: quiz.correct_answer, isHeld: false},
-          { id: nanoid(), value: quiz.incorrect_answers[0], isHeld: true},
-          { id: nanoid(), value: quiz.incorrect_answers[1], isHeld: false},
-          { id: nanoid(), value: quiz.incorrect_answers[2], isHeld: true}
+          { id: nanoid(), value: quiz.correct_answer, isHeld: false, onClick:{clickedOption} },
+          { id: nanoid(), value: quiz.incorrect_answers[0], isHeld: false, onClick:{clickedOption} },
+          { id: nanoid(), value: quiz.incorrect_answers[1], isHeld: false, onClick:{clickedOption} },
+          { id: nanoid(), value: quiz.incorrect_answers[2], isHeld: false, onClick:{clickedOption} }
         ]
       })
     })
