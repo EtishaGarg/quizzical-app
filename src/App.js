@@ -14,26 +14,17 @@ function App() {
     .then(data => setAllQuiz(data.results))
   }, [])
 
-  function clickedOption(id,optionId) {
-  //   setQuizzzes(prevQuiz => prevQuiz.map(quiz => {
-  //     return quiz.id===id ? 
-  //       {...quiz, isHeld : !quiz.isHeld}
-  //       :
-  //       quiz
-  //   }))
-  }
-
   function startQuiz(){
     const quizElements = allQuiz.map(quiz=> {
       return({
         ...quiz,
         id: nanoid(),
         options: [
-          { id: nanoid(), value: quiz.correct_answer, isHeld: false, onClick:{clickedOption} },
-          { id: nanoid(), value: quiz.incorrect_answers[0], isHeld: false, onClick:{clickedOption} },
-          { id: nanoid(), value: quiz.incorrect_answers[1], isHeld: false, onClick:{clickedOption} },
-          { id: nanoid(), value: quiz.incorrect_answers[2], isHeld: false, onClick:{clickedOption} }
-        ]
+          { value: quiz.correct_answer },
+          { value: quiz.incorrect_answers[0] },
+          { value: quiz.incorrect_answers[1] },
+          { value: quiz.incorrect_answers[2] }
+        ].sort(function(){ return Math.random() - 0.5})
       })
     })
     setQuizzzes(quizElements)
@@ -46,7 +37,6 @@ function App() {
         ?
         <div className="quiz">
           <Quiz quizzes={quizzes}/>
-          <button className="button">Check Answers</button>
         </div>
         :
         <div className="no-quiz">
