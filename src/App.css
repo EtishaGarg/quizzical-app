@@ -77,27 +77,51 @@ body {
 .option {
   border : 1px solid #4D5B9E;
   border-radius: 7px;
-  width: 150px;
-  height: 20.65px;
+  width: 180px;
+  height: 35px;
   text-align: center;
+  padding-top: 9px;
 }
 
 .isHeld {
   background-color: #D6DBF5;
 }
 
-.button {
-  margin-top: 35.35px;
+.checkAnswersButton {
+  /* margin-top: 35.35px; */
   background-color: #4D5B9E;
   color: #F5F7FB;
-  width: 120px;
+  width: 150px;
   height: 35px;
   border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  margin: 35.35px 350px;
 }
 
 .resetGame {
-  margin-top: 30px;
+  margin-left: 98px;
+  margin-top: 35.35px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+}
+
+.score {
+  width: 262px;
+  height: 15px;
+  margin-top: 35.35px;
+}
+
+.resetButton {
+  margin-top: 35.35px;
+  background-color: #4D5B9E;
+  color: #F5F7FB;
+  width: 104px;
+  height: 30px;
+  border-radius: 10px;
+  margin-top: 35.35px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
 }

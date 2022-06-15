@@ -20,10 +20,10 @@ function App() {
         ...quiz,
         id: nanoid(),
         options: [
-          { value: quiz.correct_answer },
-          { value: quiz.incorrect_answers[0] },
-          { value: quiz.incorrect_answers[1] },
-          { value: quiz.incorrect_answers[2] }
+          {value: quiz.correct_answer},
+          {value: quiz.incorrect_answers[0]},
+          {value: quiz.incorrect_answers[1]},
+          {value: quiz.incorrect_answers[2]}
         ].sort(function(){ return Math.random() - 0.5})
       })
     })
@@ -32,6 +32,7 @@ function App() {
 
   function resetGame(){
     setQuizzzes([])
+    window.location.reload();
   }
 
   return (

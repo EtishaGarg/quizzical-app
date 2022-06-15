@@ -38,8 +38,7 @@ function Quiz({ quizzes, resetGame}) {
           {
               quizzes.map((quiz, index) => (
                 <div className="quiz-questions" key={index}>
-                  <h2 className="question">{quiz.question}</h2>
-                  <div className="options">
+                  <h2 className="question">{quiz.question}</h2><div className="options">
                     <div
                       className="option"
                       onClick={(e)=>{clickedOption(e,quiz.id,quiz.options[0].value)}}
@@ -50,7 +49,6 @@ function Quiz({ quizzes, resetGame}) {
                       className="option"
                       onClick={(e)=>{clickedOption(e,quiz.id,quiz.options[1].value)}}
                     >
-
                       {quiz.options[1].value}
                     </div>
                     <div
@@ -72,13 +70,12 @@ function Quiz({ quizzes, resetGame}) {
           {response === quizzes.length && isClicked===true
           ?
           <div className="resetGame">
-            <h3>You scored {score}/{quizzes.length} correct answers</h3>
-            <button className="button" onClick={resetGame}>Play Again</button>
+            <h3 className="score">You scored {score}/{quizzes.length} correct answers</h3>
+            <button className="resetButton" onClick={resetGame}>Play Again</button>
           </div>
           :
-          <button className="button" onClick={checkAnswer}>Check Answers</button>
+          <button className="checkAnswersButton" onClick={checkAnswer}>Check Answers</button>
           }
-          
       </div>
   )
 }
