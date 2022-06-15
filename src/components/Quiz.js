@@ -1,10 +1,11 @@
 import React from "react";
 
-function Quiz({ quizzes }) {
+function Quiz({ quizzes, resetGame}) {
 
   const [selectedOption, setSelectedOption] = React.useState([]);
   const [score, setScore] = React.useState(0)
   const [response, setResponse] = React.useState(0)
+  const [isClicked, setIsClicked] = React.useState(false)
 
   
   function clickedOption(event, id, value){
@@ -19,7 +20,7 @@ function Quiz({ quizzes }) {
 //   console.log(selectedOption)
 
   function checkAnswer(){
-      let count=0
+    let count=0
     for(let i=0; i<quizzes.length; i++){
         for(let j=0; j<selectedOption.length; j++){
             if((quizzes[i].id === selectedOption[j].id) && (quizzes[i].correct_answer === selectedOption[j].optionSelected)){
@@ -28,7 +29,7 @@ function Quiz({ quizzes }) {
             }
         }
     }
-    
+    setIsClicked(true)
   }
   console.log(score)
 
@@ -49,6 +50,7 @@ function Quiz({ quizzes }) {
                       className="option"
                       onClick={(e)=>{clickedOption(e,quiz.id,quiz.options[1].value)}}
                     >
+
                       {quiz.options[1].value}
                     </div>
                     <div
@@ -67,7 +69,16 @@ function Quiz({ quizzes }) {
                 </div>
               ))
           }
+          {response === quizzes.length && isClicked===true
+          ?
+          <div className="resetGame">
+            <h3>You scored {score}/{quizzes.length} correct answers</h3>
+            <button className="button" onClick={resetGame}>Play Again</button>
+          </div>
+          :
           <button className="button" onClick={checkAnswer}>Check Answers</button>
+          }
+          
       </div>
   )
 }

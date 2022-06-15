@@ -30,13 +30,17 @@ function App() {
     setQuizzzes(quizElements)
   }
 
+  function resetGame(){
+    setQuizzzes([])
+  }
+
   return (
     <main>
       {
         quizzes.length !== 0
         ?
         <div className="quiz">
-          <Quiz quizzes={quizzes}/>
+          <Quiz quizzes={quizzes} resetGame={resetGame}/>
         </div>
         :
         <div className="no-quiz">
