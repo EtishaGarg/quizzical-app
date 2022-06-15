@@ -1,33 +1,3 @@
-// import React from 'react'
-
-// function Quiz({quizzes}) {
-//     const setData = (e) => {
-//           e.target.className= "option isHeld"
-//     }
-
-    
-//   return quizzes.map((quiz, index) => (
-      
-//     <div className="quiz-questions" key={index}>
-//         <h2 className="question">{quiz.question}</h2>
-//         <div className="options">
-//             {/* <h3 className={quiz.options[0].isHeld ? 'option isHeld':'option'} onClick={()=> quiz.options[0].onClick(()=>(quiz.id,quiz.options[0].id))}>{quiz.options[0].value}</h3>
-//             <h3 className={quiz.options[1].isHeld ? 'option isHeld':'option'} onClick={()=> quiz.options[1].onClick(()=>(quiz.id,quiz.options[1].id))}>{quiz.options[1].value}</h3>
-//             <h3 className={quiz.options[2].isHeld ? 'option isHeld':'option'} onClick={()=> quiz.options[2].onClick(()=>(quiz.id,quiz.options[2].id))}>{quiz.options[2].value}</h3>
-//             <h3 className={quiz.options[3].isHeld ? 'option isHeld':'option'} onClick={()=> quiz.options[3].onClick(()=>(quiz.id,quiz.options[3].id))}>{quiz.options[3].value}</h3>  */}
-//             <div className='option' onClick={(e)=>{setData(e)}}>{quiz.options[0].value}</div>
-//             <div className='option' onClick={(e)=>{setData(e)}}>{quiz.options[1].value}</div>
-//             <div className='option' onClick={(e)=>{setData(e)}}>{quiz.options[2].value}</div>
-//             <div className='option' onClick={(e)=>{setData(e)}}>{quiz.options[3].value}</div>
-//             onClickOption
-//         </div>
-//     </div>
-//   ))
-// }
-
-// export default Quiz
-
-
 import React from "react";
 
 function Quiz({ quizzes }) {
@@ -43,21 +13,24 @@ function Quiz({ quizzes }) {
       id: id,
       optionSelected: value
     }
-    setSelectedOption(prevSelection => [newSelection,...prevSelection])
+    setSelectedOption(prevSelection => [...prevSelection,newSelection])
     setResponse(prevResponse => prevResponse + 1)
-    console.log(selectedOption)
   }
+//   console.log(selectedOption)
 
   function checkAnswer(){
+      let count=0
     for(let i=0; i<quizzes.length; i++){
         for(let j=0; j<selectedOption.length; j++){
             if((quizzes[i].id === selectedOption[j].id) && (quizzes[i].correct_answer === selectedOption[j].optionSelected)){
-                setScore(prevScore => prevScore + 1)
+                count = count+1
+                setScore(count)
             }
         }
     }
-    console.log(score)
+    
   }
+  console.log(score)
 
   return(
       <div>
