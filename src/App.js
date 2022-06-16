@@ -32,6 +32,7 @@ function App() {
 
   function resetGame(){
     setQuizzzes([])
+    setAllQuiz([])
     window.location.reload();
   }
 

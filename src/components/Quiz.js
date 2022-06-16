@@ -34,50 +34,50 @@ function Quiz({ quizzes, resetGame}) {
   console.log(score)
 
   return(
-      <div>
-          {
-              quizzes.map((quiz, index) => (
-                <div className="quiz-questions" key={index}>
-                  <h2 className="question">{quiz.question}</h2><div className="options">
-                    <div
-                      className="option"
-                      onClick={(e)=>{clickedOption(e,quiz.id,quiz.options[0].value)}}
-                    >
-                      {quiz.options[0].value}
-                    </div>
-                    <div
-                      className="option"
-                      onClick={(e)=>{clickedOption(e,quiz.id,quiz.options[1].value)}}
-                    >
-                      {quiz.options[1].value}
-                    </div>
-                    <div
-                      className="option"
-                      onClick={(e)=>{clickedOption(e,quiz.id,quiz.options[2].value)}}
-                    >
-                      {quiz.options[2].value}
-                    </div>
-                    <div
-                      className="option"
-                      onClick={(e)=>{clickedOption(e,quiz.id,quiz.options[3].value)}}
-                    >
-                      {quiz.options[3].value}
-                    </div>
+    <div>
+        {
+            quizzes.map((quiz, index) => (
+              <div className="quiz-questions" key={index}>
+                <h2 className="question">{quiz.question}</h2><div className="options">
+                  <div
+                    className="option"
+                    onClick={(e)=>{clickedOption(e,quiz.id,quiz.options[0].value)}}
+                  >
+                    {quiz.options[0].value}
+                  </div>
+                  <div
+                    className="option"
+                    onClick={(e)=>{clickedOption(e,quiz.id,quiz.options[1].value)}}
+                  >
+                    {quiz.options[1].value}
+                  </div>
+                  <div
+                    className="option"
+                    onClick={(e)=>{clickedOption(e,quiz.id,quiz.options[2].value)}}
+                  >
+                    {quiz.options[2].value}
+                  </div>
+                  <div
+                    className="option"
+                    onClick={(e)=>{clickedOption(e,quiz.id,quiz.options[3].value)}}
+                  >
+                    {quiz.options[3].value}
                   </div>
                 </div>
-              ))
-          }
-          {response === quizzes.length && isClicked===true
-          ?
-          <div className="resetGame">
-            <h3 className="score">You scored {score}/{quizzes.length} correct answers</h3>
-            <button className="resetButton" onClick={resetGame}>Play Again</button>
-          </div>
-          :
-          <button className="checkAnswersButton" onClick={checkAnswer}>Check Answers</button>
-          }
-      </div>
-  )
+              </div>
+            ))
+        }
+        {response === quizzes.length && isClicked===true
+        ?
+        <div className="resetGame">
+          <h3 className="score">You scored {score}/{quizzes.length} correct answers</h3>
+          <button className="resetButton" onClick={resetGame}>Play Again</button>
+        </div>
+        :
+        <button className="checkAnswersButton" onClick={checkAnswer}>Check Answers</button>
+        }
+    </div>
+)
 }
 
 export default Quiz;
